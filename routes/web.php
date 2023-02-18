@@ -36,7 +36,7 @@ Route::get('/', function () {
     dd('done');
     return view('welcome');
 });
-
+//
 Route::get('/payment',[PaymentController::class, 'index']);
 Route::post('/charge',[PaymentController::class ,'charge']);
 Route::get('/confirm',[PaymentController::class, 'confirm']);
