@@ -177,6 +177,7 @@ return [
         App\Providers\FortifyServiceProvider::class,
         App\Providers\JetstreamServiceProvider::class,
         Kalizi\LaravelSpyhole\LaravelSpyholeServiceProvider::class,
+        App\Providers\TestServiceProvider::class,
 
     ],
 

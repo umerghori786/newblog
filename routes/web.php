@@ -33,7 +33,7 @@ use App\Http\Controllers\ActivityLogController;
 Route::get('/', function () {
     
     $pro = Product::create(['name'=>'observer test','description'=>'this is oberserver product test','price'=>100]);
-    dd('done');
+    
     return view('welcome');
 });
 //
