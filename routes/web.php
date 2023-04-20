@@ -128,3 +128,20 @@ Route::get('/productShow',[RenderProductController::class,'show'])->name('produc
 Route::get('/log',[ActivityLogController::class,'index']);
 Route::get('/readFile',[ActivityLogController::class,'readFile']);
 /*end*/
+
+/*components*/
+Route::get('component',function(){
+
+    return view('component',['varibale'=>'variable']);
+});
+Route::get('pusher',function(){
+    return view('pusher');
+});
+Route::get('testpusher', function () {
+    
+    /*event(new App\Events\StatusLiked('Someone'));*/
+    $user = User::find(2);
+    $user->notify(new pushnotification(1,2,3));
+    return "Event has been sent!";
+});
+/*end*/

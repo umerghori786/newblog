@@ -2,16 +2,12 @@
 
 namespace App\Notifications;
 
-use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 use Illuminate\Notifications\Messages\BroadcastMessage;
 
 class pushnotification extends Notification
 {
-    use Queueable;
-
     /**
      * Create a new notification instance.
      *
@@ -57,19 +53,19 @@ class pushnotification extends Notification
     public function toArray($notifiable)
     {
         return [
-            'comment'=>'Tarea extra de la profesora',
+            'comment'=>'hi',
         ];
     }
     public function toBroadcast($notifiable)
     {
 
         return new BroadcastMessage([
-            'comment'=>'Tarea extra de la profesora',
+            'comment'=>'hi',
             
         ]);
     }
 
     public function broadcastOn(){
-        return ['my-channel'];
+        return ['status-liked'];
     }
 }
