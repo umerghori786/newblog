@@ -18,6 +18,7 @@ use App\Evenets\MyEvent;
 use App\Models\Product;
 use App\Http\Controllers\RenderProductController;
 use App\Http\Controllers\ActivityLogController;
+use Illuminate\Support\Facades\DB;
 
 /*
 |--------------------------------------------------------------------------
@@ -139,9 +140,25 @@ Route::get('pusher',function(){
 });
 Route::get('testpusher', function () {
     
-    /*event(new App\Events\StatusLiked('Someone'));*/
-    $user = User::find(2);
-    $user->notify(new pushnotification(1,2,3));
+    event(new App\Events\StatusLiked('Someone'));
+    /*$user = User::find(2);
+    $user->notify(new pushnotification(1,2,3));*/
     return "Event has been sent!";
 });
 /*end*/
+
+/*db raw*/
+
+
+Route::get('/raw', function () {
+    
+    dd(User::select('email',
+                DB::raw("CONCAT(email,' ',name) As first_name")
+            )
+            ->whereRaw('id > ?' , [13])
+            ->get()
+    );
+    
+    
+});
+

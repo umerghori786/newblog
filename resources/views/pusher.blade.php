@@ -13,7 +13,7 @@
     });
 
     var channel = pusher.subscribe('status-liked');
-    channel.bind("Illuminate\\Notifications\\Events\\BroadcastNotificationCreated", function(data) {
+    channel.bind("App\\Events\\StatusLiked", function(data) {
       alert(JSON.stringify(data));
     });
   </script>
