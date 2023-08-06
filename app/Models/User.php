@@ -13,7 +13,7 @@ use App\Models\Image;
 use App\Models\Comment;
 use Laravel\Cashier\Billable;
 use App\Models\Tag;
-use Lexx\ChatMessenger\Traits\Messagable;
+
 
 class User extends Authenticatable
 {
@@ -23,7 +23,7 @@ class User extends Authenticatable
     use TwoFactorAuthenticatable;
     use Billable;
     use HasApiTokens;
-    use Messagable;
+   
     
 
     /**

@@ -37,6 +37,10 @@ Route::get('/', function () {
     
     return view('welcome');
 });
+
+Route::get('/offline', function () {
+    return view('vendor.laravelpwa.offline');
+});
 //
 Route::get('/payment',[PaymentController::class, 'index']);
 Route::post('/charge',[PaymentController::class ,'charge']);
