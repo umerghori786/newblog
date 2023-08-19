@@ -4,18 +4,22 @@ namespace App\Http\Controllers;
 use App\Models\jquery;
 use App\Models\Post;
 use App\Models\Image;
-
+use App\Models\JqueryTotol;
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class JqueryController extends Controller
 {
     public function index(){
-        return view('jquery');
+        $users = User::pluck('name','id');
+        return view('jquery',compact('users'));
     }
     public function store(Request $request){
+        dd($request->all());
+        $gtotal = JqueryTotol::create(['grand_total'=>$request->grand_total]);
         $quantity = $request->quantity;
         foreach ($quantity as $key => $value) {
-           jquery::create(['quantity'=>$value, 'price'=>$request->price[$key], 'total'=>$request->total[$key], 'g-total'=>$request->g_total]); 
+           jquery::create(['quantity'=>$value, 'price'=>$request->price[$key], 'total'=>$request->total[$key], 'grand_total_id'=>$gtotal->id]); 
         }
 
         return back();

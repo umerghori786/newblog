@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSideBarDataTable extends Migration
+class CreateCharityImagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateSideBarDataTable extends Migration
      */
     public function up()
     {
-        Schema::create('side_bar_data', function (Blueprint $table) {
+        Schema::create('charity_images', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id')->nullable();
-            $table->unsignedBigInteger('extralesson_id')->nullable();
-            $table->string('title')->nullable();
+            $table->text('filename')->nullable();
+            $table->text('image_url')->nullable();
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class CreateSideBarDataTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('side_bar_data');
+        Schema::dropIfExists('charity_images');
     }
 }

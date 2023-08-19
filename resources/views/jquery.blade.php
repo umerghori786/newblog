@@ -8,6 +8,8 @@
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+      <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 </head>
 <body>
 	<div class="container">
@@ -27,6 +29,16 @@
 			<div class="col-md-4">
 				<label>total</label>
 				<input type="text" name="total[]" id="total" class="total">
+				
+			</div>
+			<div class="col-md-4 mt-5">
+				<label>User</label>
+				<select class="js-example-basic-multiple" name="user_ids[]" multiple="multiple">
+					@foreach($users as $key=> $name)
+				  		<option value="{{$key}}">{{$name}}</option>
+				    @endforeach
+				  
+				</select>
 				<a class="btn btn-danger btn1" onclick="add()">+</a>
 			</div>
 		</div>
@@ -56,6 +68,8 @@
 		htmlData+='</div>';
 		htmlData+='<div class="col-md-4"><label>price</label><input type="text" name="price[]" id="price"></div>';
 		htmlData+='<div class="col-md-4"><label>total</label><input type="text" class="total" name="total[]" id="total">';
+		
+		htmlData+='<div class="col-md-4 mt-5"><label>User</label><select class="js-example-basic-multiple1" name="user_ids[]" multiple="multiple">@foreach($users as $key=> $name)<option value="{{$key}}">{{$name}}</option>@endforeach</select>';
 		htmlData+='<a class="btn btn-primary btn2" >-</a>';
 		htmlData+='</div>';
 		htmlData+='</div>';
@@ -95,6 +109,9 @@
         })
         $("#gtotal").val(gtotal);
 	}	
+	$(document).ready(function() {
+	    $('.js-example-basic-multiple').select2();
+	});
 </script>	
 </body>
 </html>

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateNewGroupsTable extends Migration
+class CreateJqueryTotolsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateNewGroupsTable extends Migration
      */
     public function up()
     {
-        Schema::create('new_groups', function (Blueprint $table) {
+        Schema::create('jquery_totols', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
+            $table->integer('grand_total');
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ class CreateNewGroupsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('new_groups');
+        Schema::dropIfExists('jquery_totols');
     }
 }

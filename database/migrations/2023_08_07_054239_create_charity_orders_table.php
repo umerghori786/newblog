@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAutomationSentsTable extends Migration
+class CreateCharityOrdersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreateAutomationSentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('automation_sents', function (Blueprint $table) {
+        Schema::create('charity_orders', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('automation_id')->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->string('email')->nullable();
-            $table->integer('clicked');
+            $table->integer('amount')->default(0);
+            $table->text('address')->nullable();
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ class CreateAutomationSentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('automation_sents');
+        Schema::dropIfExists('charity_orders');
     }
 }
