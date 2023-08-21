@@ -18,6 +18,7 @@ use App\Evenets\MyEvent;
 use App\Models\Product;
 use App\Http\Controllers\RenderProductController;
 use App\Http\Controllers\ActivityLogController;
+use App\Http\Controllers\TestPushcontroller;
 use Illuminate\Support\Facades\DB;
 
 /*
@@ -30,6 +31,10 @@ use Illuminate\Support\Facades\DB;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+/*push notificaiton*/
+Route::get('/test_notification',[TestPushcontroller::class,'notificationSent']);
+/*end*/
 
 Route::get('/', function () {
     
