@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateVideoCourseCompletesTable extends Migration
+class CreateDirectAccessTrialsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateVideoCourseCompletesTable extends Migration
      */
     public function up()
     {
-        Schema::create('video_course_completes', function (Blueprint $table) {
+        Schema::create('direct_access_trials', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('course_id');
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ class CreateVideoCourseCompletesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('video_course_completes');
+        Schema::dropIfExists('direct_access_trials');
     }
 }

@@ -18,22 +18,22 @@
 			@csrf
 		<div class="main-wrapper">
 		<div class="row">
-			<div class="col-md-4">
+			<div class="col-2 ">
 				<label>quentity</label>	
-				<input type="text" name="quantity[]" id="quantity">
+				<input type="text" class="form-control" name="quantity[]" id="quantity">
 			</div>
-			<div class="col-md-4">
+			<div class="col-2">
 				<label>price</label>
-				<input type="text" name="price[]" id="price">
+				<input type="text" class="form-control" name="price[]" id="price">
 			</div>
-			<div class="col-md-4">
+			<div class="col-2">
 				<label>total</label>
-				<input type="text" name="total[]" id="total" class="total">
+				<input type="text" class="form-control" name="total[]" id="total" class="total">
 				
 			</div>
-			<div class="col-md-4 mt-5">
+			<div class="col-4">
 				<label>User</label>
-				<select class="js-example-basic-multiple" name="user_ids[]" multiple="multiple">
+				<select class="js-example-basic-multiple form-control"  name="user_ids[]" multiple="multiple">
 					@foreach($users as $key=> $name)
 				  		<option value="{{$key}}">{{$name}}</option>
 				    @endforeach
@@ -61,20 +61,22 @@
 <script type="text/javascript">
 	function add(){
 		var htmlData = '';
-		htmlData += '<div class="row" style="mt-5,p-5">';
-		htmlData+='<div class="col-md-4">';
+		htmlData += '<div class="row" >';
+		htmlData+='<div class="col-2">';
 		htmlData+='<label>quentity</label>';	
-		htmlData+='<input type="text" name="quantity[]" id="quantity">';
+		htmlData+='<input type="text" class="form-control" name="quantity[]" id="quantity">';
 		htmlData+='</div>';
-		htmlData+='<div class="col-md-4"><label>price</label><input type="text" name="price[]" id="price"></div>';
-		htmlData+='<div class="col-md-4"><label>total</label><input type="text" class="total" name="total[]" id="total">';
+		htmlData+='<div class="col-2"><label>price</label><input type="text" class="form-control" name="price[]" id="price"></div>';
+		htmlData+='<div class="col-2"><label>total</label><input type="text" class="form-control" class="total" name="total[]" id="total"></div>';
 		
-		htmlData+='<div class="col-md-4 mt-5"><label>User</label><select class="js-example-basic-multiple1" name="user_ids[]" multiple="multiple">@foreach($users as $key=> $name)<option value="{{$key}}">{{$name}}</option>@endforeach</select>';
+		htmlData+='<div class="col-4 "><label>User</label><select class="js-example-basic-multiple form-control" name="user_ids[]" multiple="multiple">@foreach($users as $key=> $name)<option value="{{$key}}">{{$name}}</option>@endforeach</select>';
 		htmlData+='<a class="btn btn-primary btn2" >-</a>';
 		htmlData+='</div>';
 		htmlData+='</div>';
 
 		$(".append").append(htmlData);
+		// Initialize Select2 for the newly added select element
+        $('.js-example-basic-multiple').select2();
 	}
 	$('.main-wrapper').on("click",".btn2",function(e){
 		e.preventDefault();

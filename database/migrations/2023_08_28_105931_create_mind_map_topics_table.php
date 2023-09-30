@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateJqueriesTable extends Migration
+class CreateMindMapTopicsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class CreateJqueriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('jqueries', function (Blueprint $table) {
+        Schema::create('mind_map_topics', function (Blueprint $table) {
             $table->id();
-            $table->integer('price');
-            $table->integer('quantity');
-            $table->integer('total');
-            $table->integer('g-total');
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->text('topic')->nullable();
+            $table->text('topic_answer')->nullable();
             $table->timestamps();
         });
     }
@@ -30,6 +29,6 @@ class CreateJqueriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('jqueries');
+        Schema::dropIfExists('mind_map_topics');
     }
 }

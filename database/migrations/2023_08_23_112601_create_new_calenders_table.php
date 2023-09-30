@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateStripeEmailsTable extends Migration
+class CreateNewCalendersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,12 @@ class CreateStripeEmailsTable extends Migration
      */
     public function up()
     {
-        Schema::create('stripe_emails', function (Blueprint $table) {
+        Schema::create('new_calenders', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->text('remainder_date')->nullable();
+            $table->text('uniqueID')->nullable();
+            $table->text('title')->nullable();
+            $table->text('start')->nullable();
+            $table->text('end')->nullable();
             $table->timestamps();
         });
     }
@@ -28,6 +30,6 @@ class CreateStripeEmailsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('stripe_emails');
+        Schema::dropIfExists('new_calenders');
     }
 }

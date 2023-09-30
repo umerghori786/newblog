@@ -159,6 +159,7 @@ Route::get('testpusher', function () {
 /*db raw*/
 
 
+//raw prec
 Route::get('/raw', function () {
     
     dd(User::select('email',
@@ -169,5 +170,23 @@ Route::get('/raw', function () {
     );
     
     
+    
 });
+Route::get('prec',function(){
+
+        $data = \App\Models\Category::all();
+        foreach ($data as $key => $d) {
+            echo "<h5>Category Name</5> :". $d->title.' => ' .$d->subcategories->pluck('title')->implode(',') ; '<br>';
+        }
+    });
+    
+Route::get('GROUP_CONCAT',function(){
+
+        $data = \App\Models\Category::query()
+                                      ->select('categories.title',\DB::raw('GROUP_CONCAT(sub_categories.title) As subcatTitle'))
+                                      ->join('sub_categories','categories.id','=','sub_categories.category_id')
+                                      ->groupBy('categories.title')  
+                                      ->get();
+                                      dd($data);
+    });
 

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateVideoCourseCategoriesTable extends Migration
+class CreateNewblogUserTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class CreateVideoCourseCategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('video_course_categories', function (Blueprint $table) {
+        Schema::create('newblog_user', function (Blueprint $table) {
             $table->id();
-            $table->text('title')->nullable();
+            $table->unsignedInteger('newblog_id');
+            $table->unsignedInteger('user_id');
+            $table->integer('time_spent')->nullable();
             $table->timestamps();
         });
     }
@@ -27,6 +29,6 @@ class CreateVideoCourseCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('video_course_categories');
+        Schema::dropIfExists('newblog_user');
     }
 }

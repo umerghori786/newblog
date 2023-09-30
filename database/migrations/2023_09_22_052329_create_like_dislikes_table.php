@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCoursevideoStudentTable extends Migration
+class CreateLikeDislikesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,12 @@ class CreateCoursevideoStudentTable extends Migration
      */
     public function up()
     {
-        Schema::create('coursevideo_student', function (Blueprint $table) {
-            $table->unsignedBigInteger('course_video_id');
+        Schema::create('like_dislikes', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('likeable_id');
+            $table->string('likeable_type');
             $table->unsignedBigInteger('user_id');
+            $table->string('like_dislike');
             $table->timestamps();
         });
     }
@@ -27,6 +30,6 @@ class CreateCoursevideoStudentTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('coursevideo_student');
+        Schema::dropIfExists('like_dislikes');
     }
 }

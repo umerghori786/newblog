@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateImagesTable extends Migration
+class CreateUserBlogTimesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateImagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('images', function (Blueprint $table) {
+        Schema::create('user_blog_times', function (Blueprint $table) {
             $table->id();
-            $table->string('url');
-            $table->unsignedBigInteger('imageable_id'); // refer to forign key
-            $table->string('imageable_type'); //refers which model
+            $table->unsignedInteger('newblog_id');
+            $table->unsignedInteger('user_id');
+            $table->integer('time_spent')->nullable();
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class CreateImagesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('images');
+        Schema::dropIfExists('user_blog_times');
     }
 }

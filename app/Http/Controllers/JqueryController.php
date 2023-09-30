@@ -11,7 +11,7 @@ use App\Models\User;
 class JqueryController extends Controller
 {
     public function index(){
-        $users = User::pluck('name','id');
+        $users = Post::pluck('title','id');
         return view('jquery',compact('users'));
     }
     public function store(Request $request){
