@@ -42,6 +42,11 @@ Route::get('/', function () {
     
     return view('welcome');
 });
+Route::get('/newrule', function(){
+
+    $user = User::first();
+    User::addPost([1,3]);
+});
 
 Route::get('/offline', function () {
     return view('vendor.laravelpwa.offline');

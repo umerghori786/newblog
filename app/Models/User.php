@@ -80,11 +80,41 @@ class User extends Authenticatable
      public function image(){
         return $this->morphOne(Image::class,'imageable');
      }
-     public function post(){
+     public function posts(){
         return $this->hasMany('App\Models\Post');
      }
 
      public function tags(){
         return $this->morphToMany(Tag::class,'taggable');
      }
+     /**
+      * check user has any post or not
+      * 
+      * @params int $user_id
+      * @return bool
+      * */
+     public function hasPost($user_id = null)
+     {
+        $post = $this->posts()->where('user_id',$user_id);
+        if($post->count() > 0)
+        {
+            return true;
+        }
+        return false;
+    }
+    /**
+     * add post to user
+     * @params array|mix $user_id
+     * @return boolean
+     */
+    public function addPost($user_id)
+    {
+        $user_ids = is_array($user_id) ? $user_id : (array) func_get_args();
+
+        return collect($user_ids)->each(function($user_id){
+
+            User::posts()->create(['user_id'=>$user_id,'title'=>'add','peragraph'=>'af']);
+        });
+    }
+
 }
