@@ -19,6 +19,7 @@ use App\Models\Product;
 use App\Http\Controllers\RenderProductController;
 use App\Http\Controllers\ActivityLogController;
 use App\Http\Controllers\TestPushcontroller;
+use App\Http\Controllers\relationshipController;
 use Illuminate\Support\Facades\DB;
 
 /*
@@ -35,7 +36,13 @@ use Illuminate\Support\Facades\DB;
 /*push notificaiton*/
 Route::get('/test_notification',[TestPushcontroller::class,'notificationSent']);
 /*end*/
+/*relationship*/
 
+Route::get('/one_to_one',[relationshipController::class,'oneToOne']);
+
+
+
+/*end*/
 Route::get('/', function () {
     
     $pro = Product::create(['name'=>'observer test','description'=>'this is oberserver product test','price'=>100]);
