@@ -21,6 +21,8 @@ use App\Http\Controllers\ActivityLogController;
 use App\Http\Controllers\TestPushcontroller;
 use App\Http\Controllers\relationshipController;
 use Illuminate\Support\Facades\DB;
+use App\Models\Employee;
+use App\Models\Project;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,6 +42,15 @@ Route::get('/test_notification',[TestPushcontroller::class,'notificationSent']);
 
 Route::get('/one_to_one',[relationshipController::class,'oneToOne']);
 
+Route::get('/child_order',function(){
+
+    $employees = Employee::join('project', 'employees.id', '=', 'projects.employee_id')
+    ->select('employees.title', 'projects.views', 'projects.title as ProTitle')
+    ->orderByDesc('projects.views')
+    ->get();
+
+    dd($employees);
+});
 
 
 /*end*/
