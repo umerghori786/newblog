@@ -20,6 +20,7 @@ use App\Http\Controllers\RenderProductController;
 use App\Http\Controllers\ActivityLogController;
 use App\Http\Controllers\TestPushcontroller;
 use App\Http\Controllers\relationshipController;
+use App\Http\Controllers\NotificationSendController;
 use Illuminate\Support\Facades\DB;
 use App\Models\Employee;
 use App\Models\Project;
@@ -34,6 +35,16 @@ use App\Models\Project;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+/*fcm*/
+
+Route::group(['middleware' => 'auth'],function(){
+    Route::post('/store-token', [NotificationSendController::class, 'updateDeviceToken'])->name('store.token');
+    Route::post('/send-web-notification', [NotificationSendController::class, 'sendNotification'])->name('send.web-notification');
+    Route::get('/fcm', [NotificationSendController::class, 'fcm'])->name('fcm');
+});
+
+/*end*/
 
 /*push notificaiton*/
 Route::get('/test_notification',[TestPushcontroller::class,'notificationSent']);

@@ -37,6 +37,7 @@ class User extends Authenticatable
         'password',
         'CNIC',
         'license_number',
+        'device_token'
     ];
 
     /**
