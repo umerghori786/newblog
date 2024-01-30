@@ -25,6 +25,8 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Employee;
 use App\Models\Project;
 
+use App\Http\Controllers\PayPalController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -37,6 +39,10 @@ use App\Models\Project;
 */
 
 /*fcm*/
+Route::get('paypal', [PayPalController::class, 'index'])->name('paypal');
+Route::get('paypal/payment', [PayPalController::class, 'payment'])->name('paypal.payment');
+Route::get('paypal/payment/success', [PayPalController::class, 'paymentSuccess'])->name('paypal.payment.success');
+Route::get('paypal/payment/cancel', [PayPalController::class, 'paymentCancel'])->name('paypal.payment/cancel');
 
 Route::group(['middleware' => 'auth'],function(){
     Route::post('/store-token', [NotificationSendController::class, 'updateDeviceToken'])->name('store.token');
