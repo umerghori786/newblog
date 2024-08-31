@@ -24,7 +24,7 @@ use App\Http\Controllers\NotificationSendController;
 use Illuminate\Support\Facades\DB;
 use App\Models\Employee;
 use App\Models\Project;
-
+use App\Http\Controllers\LangController;
 use App\Http\Controllers\PayPalController;
 
 /*
@@ -230,3 +230,8 @@ Route::get('GROUP_CONCAT',function(){
                                       dd($data);
     });
 
+Route::get('lang/home', [LangController::class, 'index']);
+Route::get('lang/change', [LangController::class, 'change'])->name('changeLang');
+
+/*yajra datatable*/
+Route::get('/yajra',[LangController::class,'yajra']);
