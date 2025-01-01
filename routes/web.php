@@ -26,6 +26,7 @@ use App\Models\Employee;
 use App\Models\Project;
 use App\Http\Controllers\LangController;
 use App\Http\Controllers\PayPalController;
+use App\Http\Controllers\PaymentServiceCotroller;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,6 +39,9 @@ use App\Http\Controllers\PayPalController;
 |
 */
 
+/*service prectice*/
+Route::get('service',[PaymentServiceCotroller::class,'index']);
+/*end*/
 /*fcm*/
 Route::get('paypal', [PayPalController::class, 'index'])->name('paypal');
 Route::get('paypal/payment', [PayPalController::class, 'payment'])->name('paypal.payment');

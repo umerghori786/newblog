@@ -233,7 +233,8 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-        'GoogleTranslate' => Stichoza\GoogleTranslate\GoogleTranslate::class
+        'GoogleTranslate' => Stichoza\GoogleTranslate\GoogleTranslate::class,
+        'PaymentService' => App\Services\PaymentServiceFacade::class,
 
     ],
 

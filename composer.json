@@ -30,8 +30,8 @@
         "pusher/pusher-php-server": "^7.0",
         "spatie/laravel-google-calendar": "^3.6",
         "srmklive/paypal": "^3.0",
-        "stichoza/google-translate-php": "^5.1",
-        "yajra/laravel-datatables-oracle": "*"
+        "stichoza/google-translate-php": "^5.1"
+        
     },
     "require-dev": {
         "facade/ignition": "^2.5",
